@@ -5,7 +5,7 @@ module Deepspace
         @@MAXFUEL=100
         @@SHIELDLOSSPERUNITSHOT=0.1
 
-        def initialize(n,supplies,han=Hangar.new(-1),sb=Array.new,w=Array.new,dam=Damage.new(-1,0,Array.new))
+        def initialize(n,supplies,han=nil,sb=Array.new,w=Array.new,dam=Damage.new(-1,0,Array.new))
             @ammoPower=supplies.ammoPower
             @fuelUnits=supplies.fuelUnits
             @name=n
@@ -52,13 +52,13 @@ module Deepspace
         end
 
         def receiveHangar(h)
-            if(@hangar.maxElements==-1)
+            if(@hangar==nil)
                 @hangar=h
             end
         end
 
         def discardHangar
-            @hangar=Hangar.new(-1)
+            @hangar=nil
         end
 
         def receiveSupplies(s)
@@ -75,7 +75,7 @@ module Deepspace
         end
 
         def mountWeapon(i)
-            if(@hangar.maxElements!=-1)
+            if(@hangar!=nil)
                 arma=@hangar.removeWeapon(i)
                 if(arma!=nil)
                     weapons << arma
@@ -84,7 +84,7 @@ module Deepspace
         end
 
         def mountShieldBooster(i)
-            if(@hangar.maxElements!=-1)
+            if(@hangar!=nil)
                 potenciador=@hangar.removeShieldBooster(i)
                 if(potenciador!=nil)
                     shieldBoosters << potenciador
