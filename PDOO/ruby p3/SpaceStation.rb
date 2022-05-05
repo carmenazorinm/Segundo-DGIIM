@@ -5,7 +5,7 @@ module Deepspace
         @@MAXFUEL=100
         @@SHIELDLOSSPERUNITSHOT=0.1
 
-        def initialize(n,supplies,han=nil,sb=Array.new,w=Array.new,dam=Damage.new(-1,0,Array.new))
+        def initialize(n,supplies,han=nil,sb=Array.new,w=Array.new,dam=nil)
             @ammoPower=supplies.ammoPower
             @fuelUnits=supplies.fuelUnits
             @name=n
